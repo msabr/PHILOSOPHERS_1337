@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:45:31 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 19:01:16 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/18 16:06:12 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	is_death(t_philo *philo_tab, t_data *data)
 		if (((get_time_now(data->start_time) - philo_tab[i].last_meal_time)
 				> data->time_to_die) && (!data->someone_died))
 		{
-			print_is_died(&philo_tab[i], true);
+			print_is_died(&philo_tab[i], philo_tab[i].id);
 			data->someone_died = true;
 			pthread_mutex_unlock(&data->meal_check_mutex);
 			pthread_mutex_unlock (&data->death_mutex);
@@ -93,7 +93,7 @@ void	monitor(t_philo *philo_tab)
 	{
 		if (is_death(philo_tab, data))
 			break ;
-		ft_usleep(100, continue_routine(philo_tab), philo_tab);
+		ft_usleep(100, philo_tab);
 		all_ate_enough(philo_tab, data);
 	}
 }

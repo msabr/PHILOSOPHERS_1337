@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:18:46 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 17:56:49 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/18 16:24:55 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct s_philo
 {
 	int			id;
 	int			number_of_meals_eaten;
-	time_t		last_meal_time;
 	int			left_fork;
 	int			right_fork;
+	time_t		last_meal_time;
 	t_data		*shared_data;
 }	t_philo;
 
@@ -57,11 +57,12 @@ int		ft_atoi(char *str);
 void	ft_putstr_fd(int fd, char *str);
 
 //display functions
-void	print_taken_a_fork(t_philo *philo_tab, int should_print);
-void	print_is_eating(t_philo *philo_tab, int should_print);
-void	print_is_sleeping(t_philo *philo_tab, int should_print);
-void	print_is_thinking(t_philo *philo_tab, int should_print);
-void	print_is_died(t_philo *philo_tab, int should_print);
+void	print_taken_a_fork(t_philo *philo_tab, int id);
+void	print_is_eating(t_philo *philo_tab, int id);
+void	print_is_sleeping(t_philo *philo_tab, int id);
+void	print_is_thinking(t_philo *philo_tab, int id);
+void	print_is_died(t_philo *philo_tab, int id);
+
 
 //error functions
 void	test(void);
@@ -90,7 +91,7 @@ time_t	get_time_now(time_t start_time);
 
 //used functions
 bool	continue_routine(t_philo *philo_tab);
-void	ft_usleep(time_t time_ms, int should_sleep, t_philo *philo_tab);
+void	ft_usleep(time_t time_ms, t_philo *philo_tab);
 void	destroy_mutex(t_data *data);
 void	free_all(t_data *data, t_philo **philo_tab, pthread_t **philo_thread);
 
