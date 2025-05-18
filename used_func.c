@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 23:56:09 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 18:39:50 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/18 15:55:43 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ bool	continue_routine(t_philo *philo_tab)
 	return (true);
 }
 
-void	ft_usleep(time_t time, int should_sleep, t_philo *philo_tab)
+void	ft_usleep(time_t time, t_philo *philo_tab)
 {
 	time_t	start;
-
-	if (!should_sleep)
-		return ;
+	
+	// if (!continue_routine(philo_tab))
+	// 	return ;
 	start = get_time_ms();
 	while (get_time_now(start) < time)
 	{
-		usleep(1000);
+		usleep(500);
 		if (!continue_routine(philo_tab))
 			break;
 	}
