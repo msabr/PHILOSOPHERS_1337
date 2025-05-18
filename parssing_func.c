@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parssing.c                                         :+:      :+:    :+:   */
+/*   parssing_func.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:33:05 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/15 04:35:02 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/18 15:56:23 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ bool	valid_args(int ac, char **av)
 	while (av[i])
 	{
 		j = 0;
-		while (av[i][j])
+		while (is_space(av[i][j]))
+			j++;
+		if (av[i][j] == '+')
+			j++;
+		while (av[i][j] && is_digit(av[i][j]))
 		{
-			if (!is_digit(av[i][j]) && av[i][0] != '+' && !is_space(av[i][j]))
-				return (false);
 			j++;
 		}
+		while (is_space(av[i][j]))
+			j++;
+		if (av[i][j] != '\0')
+			return (false);
 		i++;
 	}
 	return (true);
