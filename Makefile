@@ -26,7 +26,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $^ -o $@
-		make clean
 
 %.o: %.c $(HEADERS)
 		$(CC) $(CFLAGS) -c $< -o $@
@@ -39,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean
+.PHONY: clean fclean re all

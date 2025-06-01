@@ -6,23 +6,18 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:25:34 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/01 14:29:20 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/01 14:54:14 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// void f()
-// {
-// 	system("leaks -q philo");
-// }
 int	main(int ac, char **av)
 {
 	t_data		data;
 	t_philo		*philo_tab;
 	pthread_t	*philo_thread;
 
-	// atexit(f);
 	philo_tab = NULL;
 	if (!valid_args(ac, av) || !valid_limit(av))
 		return (error_message("Invalide arguments"), 1);
