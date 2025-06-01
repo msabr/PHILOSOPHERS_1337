@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:25:34 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 15:21:56 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/01 14:29:20 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int	main(int ac, char **av)
 	philo_thread = malloc(sizeof(pthread_t) * data.number_of_philos);
 	if (!philo_thread)
 		return (error_message("Memory allocation failed"),
-		 free_all(&data, &philo_tab, &philo_thread), 1);
+			free_all(&data, &philo_tab, &philo_thread), 1);
 	if (!create_thread_tab(philo_tab, philo_thread))
 		return (error_message("Thread creation failed"),
-		 free_all(&data, &philo_tab, &philo_thread), 1);
+			free_all(&data, &philo_tab, &philo_thread), 1);
 	monitor(philo_tab);
 	if (!join_thread_tab(philo_tab, philo_thread))
 		return (error_message("Thread joining failed"),
-		 free_all(&data, &philo_tab, &philo_thread), 1);
+			free_all(&data, &philo_tab, &philo_thread), 1);
 	free_all(&data, &philo_tab, &philo_thread);
 	return (0);
 }

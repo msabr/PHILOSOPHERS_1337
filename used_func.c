@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 23:56:09 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/18 16:11:12 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/31 18:09:46 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ bool	continue_routine(t_philo *philo_tab)
 void	ft_usleep(time_t time, t_philo *philo_tab)
 {
 	time_t	start;
-	
+
 	if (!continue_routine(philo_tab))
 		return ;
 	start = get_time_ms();
 	while (get_time_now(start) < time)
 	{
-		usleep(500);
+		usleep(250);
 		if (!continue_routine(philo_tab))
-			break;
+			break ;
 	}
 }
 
-void destroy_mutex(t_data *data)
+void	destroy_mutex(t_data *data)
 {
 	int	i;
 

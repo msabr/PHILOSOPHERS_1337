@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:51:54 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 01:40:29 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/31 18:03:50 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_atoi(char *str)
 	return ((int)nbr);
 }
 
-void ft_putstr_fd(int fd, char *str)
+void	ft_putstr_fd(int fd, char *str)
 {
 	int	i;
 

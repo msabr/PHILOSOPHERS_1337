@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:33:05 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/18 15:56:23 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/23 11:05:06 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@ bool	valid_args(int ac, char **av)
 	while (av[i])
 	{
 		j = 0;
-		while (is_space(av[i][j]))
+		while (av[i][j] && is_space(av[i][j]))
 			j++;
-		if (av[i][j] == '+')
+		if (av[i][j] && av[i][j] == '+')
 			j++;
 		while (av[i][j] && is_digit(av[i][j]))
-		{
 			j++;
-		}
-		while (is_space(av[i][j]))
+		while (av[i][j] && is_space(av[i][j]))
 			j++;
 		if (av[i][j] != '\0')
 			return (false);

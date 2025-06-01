@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 19:37:56 by msabr             #+#    #+#             */
-/*   Updated: 2025/05/16 18:39:33 by msabr            ###   ########.fr       */
+/*   Updated: 2025/05/31 18:08:29 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 static bool	init_data(t_data *data, char **av)
 {
-	data = memset(data, 0, sizeof(t_data));
+	memset(data, 0, sizeof(t_data));
 	data->number_of_philos = ft_atoi(av[1]);
-	if (data->number_of_philos % 2	== 0 || data->number_of_philos == 1)
-		data->time_to_die = ft_atoi(av[2]);
-	else if (data->number_of_philos < 175)
-		data->time_to_die = ft_atoi(av[2]) + 1;
-	else
-		data->time_to_die = ft_atoi(av[2]) + 5;
+	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
@@ -73,6 +68,6 @@ bool	init_all(t_data *data, t_philo **philos, char **av)
 	if (!*philos)
 		return (false);
 	if (!init_philos(data, *philos))
-	return (destroy_mutex(data), free(*philos), false);
+		return (destroy_mutex(data), free(*philos), false);
 	return (true);
 }
