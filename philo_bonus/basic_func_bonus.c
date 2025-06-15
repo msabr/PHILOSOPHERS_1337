@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:51:54 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 00:05:50 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/15 01:50:25 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_atoi(char *str)
 	return ((int)nbr);
 }
 
-void ft_putstr_fd(int fd, char *str)
+void	ft_putstr_fd(int fd, char *str)
 {
 	int	i;
 
@@ -68,14 +68,4 @@ void ft_putstr_fd(int fd, char *str)
 		write(fd, &str[i], 1);
 		i++;
 	}
-}
-
-int ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

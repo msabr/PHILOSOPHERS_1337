@@ -1,21 +1,34 @@
-SRC = init_bonus.c  management_bonus.c parse_bonus.c \
-	philo_bonus.c  philo_routine_bonus.c tools_bonus.c  utility_bonus.c  tools2_bonus.c basic_func_bonus.c \
-	display_func_bonus.c
+SRC =	basic_func_bonus.c\
+		display_bonus.c\
+		errors_bonus.c\
+		init_bonus.c\
+		monitor_bonus.c\
+		parssing_bonus.c\
+		routine_bonus.c\
+		processes_bonus.c\
+		time_bonus.c\
+		main_bonus.c
 
 OBJS = $(SRC:.c=.o)
 
 NAME = philo_bonus
+
 CC = cc
-CFLAG = -Wall -Wextra -Werror
+
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+
 RM = rm -rf
+
+HEADERS = philo.h
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(CFLAG) $^ -o $@
+		$(CC) $(CFLAGS) $^ -o $@
+		make clean
 
-%.o: %.c  philo_bonus.h
-		$(CC) $(CFLAG) -c $< -o $@
+%.o: %.c $(HEADERS)
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

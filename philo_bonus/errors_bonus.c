@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utility_bonus.c                                    :+:      :+:    :+:   */
+/*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 20:58:40 by aouanni           #+#    #+#             */
-/*   Updated: 2025/06/15 00:13:40 by msabr            ###   ########.fr       */
+/*   Created: 2025/04/07 21:01:48 by msabr             #+#    #+#             */
+/*   Updated: 2025/06/15 01:50:59 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_usleep(time_t time_ms)
-{
-	time_t	start_time;
-
-	start_time = get_time_ms();
-	while (get_time_now(start_time) < time_ms)
-		usleep(500);
-}
-
-void		error_message(char *msg)
+void	error_message(char *msg)
 {
 	ft_putstr_fd(2, "\033[31mError:");
 	ft_putstr_fd(2, msg);
 	ft_putstr_fd(2, " \033[0m\n");
 }
 
+void	destroy_simulation(t_data *data, t_philo *philo_tab)
+{
+	if (philo_tab)
+	{
+		free(philo_tab);
+		philo_tab = NULL;
+	}
+	if (data->forks)
+	{
+		sem_close(data->forks);
+		sem_unlink("/forks");
+	}
+	if (data->print)
+	{
+		sem_close(data->print);
+		sem_unlink("/print");
+	}
+	if (data->death)
+	{
+		sem_close(data->death);
+		sem_unlink("/death");
+	}
+}

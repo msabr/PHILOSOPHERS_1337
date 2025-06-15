@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_func_bonus.c                               :+:      :+:    :+:   */
+/*   display_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:30:30 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 00:31:01 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/15 01:50:47 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	print_is_thinking(t_philo *philo_tab, int id)
 	sem_post(philo_tab->shared_data->print);
 }
 
-void	print_is_died(t_philo *philo_tab , int id)
-
+void	print_is_died(t_philo *philo_tab, int id)
 {
 	time_t	time;
 
@@ -61,4 +60,3 @@ void	print_is_died(t_philo *philo_tab , int id)
 	time = get_time_now(philo_tab->shared_data->start_time);
 	printf("\033[31m%ld %d is died\033[0m\n", time, id);
 }
-
