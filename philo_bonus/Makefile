@@ -15,7 +15,7 @@ NAME = philo_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
