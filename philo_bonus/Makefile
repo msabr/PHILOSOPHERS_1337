@@ -25,7 +25,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $^ -o $@
-		make clean
 
 %.o: %.c $(HEADERS)
 		$(CC) $(CFLAGS) -c $< -o $@
