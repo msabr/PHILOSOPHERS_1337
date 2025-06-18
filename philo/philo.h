@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:18:46 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/01 14:31:34 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 20:42:47 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdbool.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+# define PHILO_MAX 200
+# define TIME_MIN 60
 
 typedef struct s_data
 {
