@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 19:37:56 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 01:51:50 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 20:48:03 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	init_data(t_data *data, char **av)
 	return (true);
 }
 
-static bool	init_philos(t_data *data, t_philo *philo_tab)
+static void	init_philos(t_data *data, t_philo *philo_tab)
 {
 	int	i;
 
@@ -52,7 +52,6 @@ static bool	init_philos(t_data *data, t_philo *philo_tab)
 		philo_tab[i].pid = -1;
 		i++;
 	}
-	return (true);
 }
 
 bool	init_all(t_data *data, t_philo **philo_tab, char **av)
@@ -62,7 +61,6 @@ bool	init_all(t_data *data, t_philo **philo_tab, char **av)
 	*philo_tab = (t_philo *)malloc(sizeof(t_philo) * data->number_of_philos);
 	if (!*philo_tab)
 		return (false);
-	if (!init_philos(data, *philo_tab))
-		return (free(*philo_tab), false);
+	init_philos(data, *philo_tab);
 	return (true);
 }

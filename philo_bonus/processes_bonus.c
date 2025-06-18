@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 01:13:23 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 02:27:45 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 21:48:20 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ bool	launch_processes(t_data *data, t_philo *philo_tab)
 		philo_tab[i].last_meal_time = data->start_time;
 		if (philo_tab[i].pid == 0)
 		{
-			pthread_create(&philo_tab[i].thread, NULL, monitor, &philo_tab[i]);
+			if (pthread_create(&philo_tab[i].thread,
+					NULL, monitor, &philo_tab[i]))
+				return (false);
 			routine(&philo_tab[i]);
-			pthread_join(philo_tab[i].thread, NULL);
+			if (pthread_join(philo_tab[i].thread, NULL))
+				return (false);
 			exit(0);
 		}
-		ft_usleep(1);
 		i++;
 	}
 	return (true);
@@ -51,24 +53,24 @@ bool	launch_processes(t_data *data, t_philo *philo_tab)
 void	terminate_processes(t_data *data, t_philo *philo_tab)
 {
 	int	i;
+	int	status;
 
 	i = 0;
-	if (data->meals_num == -1)
-		sem_wait(data->death);
-	else
-	{
-		while (i < data->number_of_philos)
-		{
-			sem_wait(data->death);
-			i++;
-		}
-	}
 	while (i < data->number_of_philos)
 	{
-		kill(philo_tab[i].pid, SIGKILL);
-		waitpid(philo_tab[i].pid, NULL, 0);
-		i++;
+		if (waitpid(-1, &status, 0) == -1)
+			error_message("waitpid");
+		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+			i++;
+		else
+			break ;
 	}
+	i = -1;
+	while (++i < data->number_of_philos)
+		kill(philo_tab[i].pid, SIGKILL);
+	i = -1;
+	while (++i < data->number_of_philos)
+		waitpid(philo_tab[i].pid, NULL, 0);
 	sem_post(data->death);
 	destroy_simulation(data, philo_tab);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:18:46 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 02:26:56 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 21:23:34 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # include <sys/types.h>
 # include <semaphore.h>
 # include <stdatomic.h>
+
+# define PHILO_MAX 200
+# define TIME_MIN 60
 
 typedef struct s_data
 {

@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:45:31 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 02:27:57 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/16 16:56:05 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*monitor(void *args)
 			print_is_died(philo_tab, philo_tab->id);
 			philo_tab->should_break = true;
 			sem_post(philo_tab->shared_data->death);
-			break ;
+			exit(1);
 		}
 		ft_usleep(1);
 	}

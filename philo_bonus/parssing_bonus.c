@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parssing_func.c                                    :+:      :+:    :+:   */
+/*   parssing_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:33:05 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/15 00:40:19 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 21:25:35 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ bool	valid_limit(char **av)
 	int	i;
 
 	(void)av;
-	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[1]) > 200)
+	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[1]) > PHILO_MAX)
 		return (false);
 	i = 2;
 	while (av[i])
 	{
-		if ((ft_atoi(av[i]) < 60 && i < 5)
+		if ((ft_atoi(av[i]) < TIME_MIN && i < 5)
 			|| ft_atoi(av[i]) <= 0
 			|| ft_atoi(av[i]) > INT_MAX)
 			return (false);
