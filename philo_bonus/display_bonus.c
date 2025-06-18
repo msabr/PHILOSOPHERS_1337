@@ -6,7 +6,7 @@
 /*   By: msabr <msabr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:30:30 by msabr             #+#    #+#             */
-/*   Updated: 2025/06/18 21:32:06 by msabr            ###   ########.fr       */
+/*   Updated: 2025/06/18 21:52:22 by msabr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,4 @@ void	print_is_died(t_philo *philo_tab, int id)
 	time = get_time_now(philo_tab->shared_data->start_time);
 	printf("\033[31m%ld %d is died\033[0m\n", time, id);
 	philo_tab->should_break = true;
-	// sem_post(philo_tab->shared_data->print);
 }
