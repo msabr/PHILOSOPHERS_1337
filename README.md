@@ -1,5 +1,9 @@
 #  PHILOSOPHERS - 42 Network
 
+<div align="center">
+<img src="Philosophers.png" with="600"/>
+</div>
+
 Implementation of the **Dining Philosophers Problem**, a classic concurrency challenge, using **threads (mandatory)** and optionally **processes/semaphores (bonus)**.
 
 ---
